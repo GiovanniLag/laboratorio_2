@@ -1,0 +1,1 @@
+source ../../info_2/root/bin/thisroot.sh

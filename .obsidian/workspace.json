@@ -1,0 +1,184 @@
+{
+  "main": {
+    "id": "a126d8bc00f03995",
+    "type": "split",
+    "children": [
+      {
+        "id": "e3252c095b44d9d6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7ffbc28736f518e0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "microonde/diario_di_bordo/diario_di_bordo.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "d7c52de70fd36e37",
+    "type": "split",
+    "children": [
+      {
+        "id": "7a631dc8a00f45e2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "588de13bd94b6db6",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "4b8dfbaac072f0cb",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "ba711090e8de5d44",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          },
+          {
+            "id": "c17196ae30154d39",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "acd43b896266074d",
+    "type": "split",
+    "children": [
+      {
+        "id": "4563623cd80bd7c0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8fa08c193b4e8fdf",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "microonde/diario_di_bordo/diario_di_bordo.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "8fff1f5b1bd76a58",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "microonde/diario_di_bordo/diario_di_bordo.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "af220ab780884bb2",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "bc8f8accd51d4927",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "microonde/diario_di_bordo/diario_di_bordo.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "7ffbc28736f518e0",
+  "lastOpenFiles": [
+    "microonde/data/fabry_perot/fabry_perot_max.csv",
+    "microonde/data/fabry_perot/fabry_perot.csv",
+    "microonde/data/fabry_perot",
+    "microonde/data/brewster/trasmissione/max_2.csv",
+    "microonde/data/brewster/trasmissione/max_1.csv",
+    "microonde/data/brewster/riflessione/60.csv",
+    "microonde/data/brewster/riflessione/55.csv",
+    "microonde/data/brewster/riflessione/50.csv",
+    "microonde/data/brewster/riflessione/40.csv",
+    "microonde/data/brewster/riflessione/30.csv",
+    "microonde/data/brewster/riflessione/20.csv",
+    "microonde/diario_di_bordo/filtro_pol.jpg",
+    "microonde/data/polarizzazione/filtro_pol.jpg",
+    "microonde/diario_di_bordo/riflessione.jpg",
+    "microonde/diario_di_bordo/ondestazionarie_r.jpg",
+    "microonde/data/polarizzazione/riflessione.jpg",
+    "microonde/data/polarizzazione/ondestazionarie_r.jpg",
+    "microonde/diario_di_bordo/diario_di_bordo.md",
+    "circuiti_3/diario_di_bordo/parte_1_rc_circuito.jpg",
+    "circuiti_3/diario_di_bordo/fsdff.md",
+    "circuiti_3/diario_di_bordo/diaro_circuiti_3.md",
+    "circuiti_3/fitting_root/phase.png",
+    "circuiti_3/fitting_root/MTH_imgs/MTH_14.png",
+    "circuiti_3/fitting_root/CH2_imgs/CH2_14.png"
+  ]
+}

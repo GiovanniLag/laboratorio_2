@@ -1,0 +1,8 @@
+data:
+  RL: null
+  RC: null
+  RLC:
+    sottosmorzato: null
+    sovrasmorzato: null
+    smorzamentro_critico: null
+
