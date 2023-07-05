@@ -1,0 +1,297 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11268,        289]
+NotebookOptionsPosition[     10521,        267]
+NotebookOutlinePosition[     10960,        284]
+CellTagsIndexPosition[     10917,        281]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"data", "=", 
+    RowBox[{
+    "Import", "[", 
+     "\"\<C:\\\\Users\\\\giova\\\\Documents\\\\uni\\\\laboratorio_2\\\\\
+microonde\\\\data\\\\onde_stazionarie\\\\ondestazionarie_r_massimi_elab.csv\>\
+\"", "]"}]}], ";"}], "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rsMax", "=", 
+   RowBox[{"ToExpression", "[", 
+    RowBox[{"data", "[", 
+     RowBox[{"[", 
+      RowBox[{"All", ",", "1"}], "]"}], "]"}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"vMax", "=", 
+    RowBox[{"data", "[", 
+     RowBox[{"[", 
+      RowBox[{"All", ",", "3"}], "]"}], "]"}]}], ";"}], 
+  "\n"}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Show", "[", 
+    RowBox[{
+     RowBox[{"ListPlot", "[", 
+      RowBox[{
+       RowBox[{"data", "[", 
+        RowBox[{"[", 
+         RowBox[{"All", ",", 
+          RowBox[{"{", 
+           RowBox[{"1", ",", "3"}], "}"}]}], "]"}], "]"}], ",", 
+       RowBox[{"PlotRange", "->", "All"}], ",", 
+       RowBox[{"PlotStyle", "->", 
+        RowBox[{"PointSize", "[", "0.02", "]"}]}], ",", 
+       RowBox[{"Frame", "->", "True"}], ",", 
+       RowBox[{"FrameLabel", "->", 
+        RowBox[{"{", 
+         RowBox[{"\"\<rs_max\>\"", ",", "\"\<V_max\>\""}], "}"}]}]}], "]"}], 
+     ",", 
+     RowBox[{"Plot", "[", 
+      RowBox[{
+       RowBox[{"V0", "/", 
+        RowBox[{"r", "^", "1"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"r", ",", "0.2", ",", "0.78"}], "}"}], ",", 
+       RowBox[{"PlotStyle", "->", 
+        RowBox[{"{", 
+         RowBox[{"Red", ",", "Dashed"}], "}"}]}]}], "]"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"V0", ",", "1", ",", "\"\<V0\>\""}], "}"}], ",", "0.1", ",", 
+     "10", ",", 
+     RowBox[{"Appearance", "->", "\"\<Labeled\>\""}]}], "}"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.8936730267071896`*^9, 3.8936730782858696`*^9}, 
+   3.893673248002411*^9, {3.893673278924497*^9, 3.8936732897420807`*^9}, 
+   3.8936733478554697`*^9, {3.8936733894314804`*^9, 3.8936734015399895`*^9}, {
+   3.8936742640682077`*^9, 3.893674273233369*^9}, {3.8936744454643497`*^9, 
+   3.8936744455841336`*^9}, {3.893674539591134*^9, 3.8936745397161283`*^9}, {
+   3.893674572820375*^9, 3.893674573115446*^9}, {3.8936746568114967`*^9, 
+   3.8936746862642736`*^9}, {3.893675582250033*^9, 3.893675607539053*^9}},
+ CellLabel->
+  "In[100]:=",ExpressionUUID->"d0acb3d5-68dd-46d1-8754-d7d15a265116"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`V0$$ = 1, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`V0$$], 1, "V0"}, 0.1, 10}}, Typeset`size$$ = {
+    360., {114., 118.9685477072681}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = True}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`V0$$ = 1}, 
+      "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Show[
+        ListPlot[
+         Part[$CellContext`data, All, {1, 3}], PlotRange -> All, PlotStyle -> 
+         PointSize[0.02], Frame -> True, FrameLabel -> {"rs_max", "V_max"}], 
+        Plot[$CellContext`V0$$/$CellContext`r^1, {$CellContext`r, 0.2, 0.78}, 
+         PlotStyle -> {Red, Dashed}]], 
+      "Specifications" :> {{{$CellContext`V0$$, 1, "V0"}, 0.1, 10, Appearance -> 
+         "Labeled"}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{669., {145.13403328722342`, 150.86596671277658`}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.8936730816984415`*^9, 3.893673249252461*^9, 3.893673291533526*^9, 
+   3.893673348929073*^9, {3.893673390775013*^9, 3.893673403203527*^9}, {
+   3.8936742664024563`*^9, 3.8936742753283987`*^9}, 3.893674447077979*^9, 
+   3.893674541186181*^9, 3.893674574688404*^9, {3.8936746615080643`*^9, 
+   3.893674687441461*^9}, {3.8936755855470223`*^9, 3.8936756086761255`*^9}, 
+   3.893685614154885*^9},
+ CellLabel->
+  "Out[103]=",ExpressionUUID->"65d3fc32-87a3-426e-97d1-80d1351fbeb0"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"data", "=", 
+    RowBox[{
+    "Import", "[", 
+     "\"\<C:\\\\Users\\\\giova\\\\Documents\\\\uni\\\\laboratorio_2\\\\\
+microonde\\\\data\\\\polarizzazione\\\\polarizzazione_alpha.csv\>\"", "]"}]}],
+    ";"}], "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"data", "[", 
+     RowBox[{"[", 
+      RowBox[{"All", ",", "1"}], "]"}], "]"}], "=", 
+    RowBox[{
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1"}], "]"}], "]"}], " ", "Degree"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"vMax", "=", 
+    RowBox[{"data", "[", 
+     RowBox[{"[", 
+      RowBox[{"All", ",", "3"}], "]"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Show", "[", 
+    RowBox[{
+     RowBox[{"ListPlot", "[", 
+      RowBox[{
+       RowBox[{"data", "[", 
+        RowBox[{"[", 
+         RowBox[{"All", ",", 
+          RowBox[{"{", 
+           RowBox[{"1", ",", "2"}], "}"}]}], "]"}], "]"}], ",", 
+       RowBox[{"PlotRange", "->", "All"}], ",", 
+       RowBox[{"PlotStyle", "->", 
+        RowBox[{"PointSize", "[", "0.02", "]"}]}], ",", 
+       RowBox[{"Frame", "->", "True"}], ",", 
+       RowBox[{"FrameLabel", "->", 
+        RowBox[{"{", 
+         RowBox[{"\"\<alpha_max (radians)\>\"", ",", "\"\<V_max\>\""}], 
+         "}"}]}]}], "]"}], ",", 
+     RowBox[{"Plot", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"V1", " ", "*", " ", 
+         RowBox[{
+          RowBox[{"Cos", "[", "alpha", "]"}], "^", "2"}]}], " ", "+", " ", 
+        RowBox[{"V0", "*", 
+         RowBox[{"Abs", "[", 
+          RowBox[{"(", 
+           RowBox[{"Cos", "[", "alpha", "]"}], ")"}], "]"}]}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"alpha", ",", "0", ",", 
+         RowBox[{"90", " ", "Degree"}]}], "}"}], ",", 
+       RowBox[{"PlotStyle", "->", 
+        RowBox[{"{", 
+         RowBox[{"Red", ",", "Dashed"}], "}"}]}]}], "]"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"V0", ",", "1", ",", "\"\<V0\>\""}], "}"}], ",", "0.1", ",", 
+     "10", ",", 
+     RowBox[{"Appearance", "->", "\"\<Labeled\>\""}]}], "}"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"V1", ",", "1", ",", "\"\<V1\>\""}], "}"}], ",", "0.1", ",", 
+     "10", ",", 
+     RowBox[{"Appearance", "->", "\"\<Labeled\>\""}]}], "}"}]}], 
+  "]"}], "\n"}], "Input",
+ CellChangeTimes->{{3.8936802905757732`*^9, 3.8936805303170547`*^9}, 
+   3.893680608818016*^9, {3.893680993924286*^9, 3.893681002727727*^9}, {
+   3.8936855233422832`*^9, 3.8936855378607597`*^9}, {3.8936855682741666`*^9, 
+   3.8936855734184628`*^9}},
+ CellLabel->"In[96]:=",ExpressionUUID->"1721c40e-6462-4878-9c85-1ca67c9d1778"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`V0$$ = 2.33, $CellContext`V1$$ = 1.05, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`V0$$], 1, "V0"}, 0.1, 10}, {{
+       Hold[$CellContext`V1$$], 1, "V1"}, 0.1, 10}}, Typeset`size$$ = {
+    360., {109., 113.6569168737395}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = True}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`V0$$ = 1, $CellContext`V1$$ = 1}, 
+      "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Show[
+        ListPlot[
+         Part[$CellContext`data, All, {1, 2}], PlotRange -> All, PlotStyle -> 
+         PointSize[0.02], Frame -> True, 
+         FrameLabel -> {"alpha_max (radians)", "V_max"}], 
+        Plot[$CellContext`V1$$ Cos[$CellContext`alpha]^2 + $CellContext`V0$$ 
+          Abs[
+            Cos[$CellContext`alpha]], {$CellContext`alpha, 0, 90 Degree}, 
+         PlotStyle -> {Red, Dashed}]], 
+      "Specifications" :> {{{$CellContext`V0$$, 1, "V0"}, 0.1, 10, Appearance -> 
+         "Labeled"}, {{$CellContext`V1$$, 1, "V1"}, 0.1, 10, Appearance -> 
+         "Labeled"}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{669., {140.13403328722342`, 145.86596671277658`}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.893680393981325*^9, 3.89368045791649*^9}, 
+   3.893680518498682*^9, 3.8936806101220355`*^9, 3.8936810049902563`*^9, 
+   3.8936855766435184`*^9},
+ CellLabel->"Out[99]=",ExpressionUUID->"8bb53d63-1bfd-4727-a43f-6affab90ca3e"]
+}, Open  ]]
+},
+WindowSize->{1152., 579.6},
+WindowMargins->{{
+  Automatic, -5.399999999999864}, {-5.399999999999977, Automatic}},
+FrontEndVersion->"13.1 for Microsoft Windows (64-bit) (August 22, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"d36adf5f-f344-47f5-8aed-690daa1ccdee"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 2451, 65, 143, "Input",ExpressionUUID->"d0acb3d5-68dd-46d1-8754-d7d15a265116"],
+Cell[3034, 89, 2298, 44, 315, "Output",ExpressionUUID->"65d3fc32-87a3-426e-97d1-80d1351fbeb0"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5369, 138, 2785, 79, 219, "Input",ExpressionUUID->"1721c40e-6462-4878-9c85-1ca67c9d1778"],
+Cell[8157, 219, 2348, 45, 305, "Output",ExpressionUUID->"8bb53d63-1bfd-4727-a43f-6affab90ca3e"]
+}, Open  ]]
+}
+]
+*)
+

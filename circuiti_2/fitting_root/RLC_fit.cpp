@@ -47,7 +47,7 @@ int main(int argc, char const *argv[])
 
 
     //fit graphs
-    TF1 *sottosmorzato_fit = new TF1("sottosmorzato_fit", "[0] * exp(-[1]*x) * (([1]*cos([2]*x))+([2]*sin([2]*x)))", 0, t_sottosmorzato.at(t_sottosmorzato.size()-1)); //[0] = I_0, [1] = gamma, [2] = beta
+    TF1 *sottosmorzato_fit = new TF1("sottosmorzato_fit", "[0] * exp(-[1]*x) * (([2]*sin([2]*x)))", 0, t_sottosmorzato.at(t_sottosmorzato.size()-1)); //[0] = I_0, [1] = gamma, [2] = beta
 
     std::cout << "Fit sottosmorzato" << std::endl;
     sottosmorzato_fit = BFOMTY_fixed(sottosmorzato_grph, sottosmorzato_fit, fitIters, intial_params_sottosmorzato, 0.1);
@@ -92,7 +92,7 @@ int main(int argc, char const *argv[])
     fitInfo_sottosmorzato->AddText(Form("   p-value  = %.3f", sottosmorzato_fit->GetProb()));
     fitInfo_sottosmorzato->Draw();
     //save canvas
-    //c_sottosmorzato->SaveAs("RLC_fit_sottosmorzato.png");
+    c_sottosmorzato->SaveAs("RLC_fit_sottosmorzato.png");
 
 
     c_crit_smorzato->cd();

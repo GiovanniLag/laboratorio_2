@@ -4,18 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "e3252c095b44d9d6",
+        "id": "bd6db4efbd3f3319",
         "type": "tabs",
         "children": [
           {
-            "id": "7ffbc28736f518e0",
+            "id": "325fa31f0ead2631",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "microonde/diario_di_bordo/diario_di_bordo.md",
-                "mode": "source",
-                "source": false
+                "file": "Untitled.canvas",
+                "viewState": {
+                  "x": -140,
+                  "y": 1.5,
+                  "zoom": 0
+                }
               }
             }
           }
@@ -93,7 +96,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "microonde/diario_di_bordo/diario_di_bordo.md",
+                "file": "Untitled.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +113,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "microonde/diario_di_bordo/diario_di_bordo.md",
+                "file": "Untitled.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +136,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "microonde/diario_di_bordo/diario_di_bordo.md"
+                "file": "Untitled.canvas"
               }
             }
           }
@@ -154,31 +157,35 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "7ffbc28736f518e0",
+  "active": "325fa31f0ead2631",
   "lastOpenFiles": [
-    "microonde/data/fabry_perot/fabry_perot_max.csv",
-    "microonde/data/fabry_perot/fabry_perot.csv",
-    "microonde/data/fabry_perot",
-    "microonde/data/brewster/trasmissione/max_2.csv",
-    "microonde/data/brewster/trasmissione/max_1.csv",
-    "microonde/data/brewster/riflessione/60.csv",
-    "microonde/data/brewster/riflessione/55.csv",
-    "microonde/data/brewster/riflessione/50.csv",
-    "microonde/data/brewster/riflessione/40.csv",
-    "microonde/data/brewster/riflessione/30.csv",
-    "microonde/data/brewster/riflessione/20.csv",
-    "microonde/diario_di_bordo/filtro_pol.jpg",
-    "microonde/data/polarizzazione/filtro_pol.jpg",
-    "microonde/diario_di_bordo/riflessione.jpg",
+    "Untitled.canvas",
+    "interferometro/diario_di_bordo/diario_di_bordo.md",
+    "interferometro/imgs/michelson_vetro.png",
+    "interferometro/imgs/michelson_aria.png",
+    "interferometro/imgs/righello.jpg",
+    "interferometro/fitting_root/fit_righello.png",
+    "interferometro/fitting_root/fit_righello",
+    "interferometro/fitting_root/fit_righello.cpp",
+    "interferometro/data/righello/delta_cos_theta.csv",
+    "interferometro/data/righello",
+    "interferometro/imgs/config_michelson.png",
+    "interferometro/fitting_root/cos_fit.png",
+    "interferometro/fitting_root/fit_cos_fp",
+    "interferometro/fitting_root/fit_cos_fp.cpp",
+    "interferometro/data/fabry-perot/cos_fit.csv",
+    "interferometro/data/fabry-perot/radii.tex",
+    "interferometro/imgs/config_fabry-perot.png",
+    "interferometro/imgs/immagine_base_appoggio.jpg",
+    "interferometro/immagine_base_appoggio.jpg",
     "microonde/diario_di_bordo/ondestazionarie_r.jpg",
-    "microonde/data/polarizzazione/riflessione.jpg",
-    "microonde/data/polarizzazione/ondestazionarie_r.jpg",
+    "2023-06-12.md",
+    "interferometro/data/michelson/vetro.csv",
+    "interferometro/data/fabry-perot/vario_dist_specchio.csv",
+    "spettrometro/diario_di_bordo/diario_di_bordo.md",
     "microonde/diario_di_bordo/diario_di_bordo.md",
-    "circuiti_3/diario_di_bordo/parte_1_rc_circuito.jpg",
-    "circuiti_3/diario_di_bordo/fsdff.md",
     "circuiti_3/diario_di_bordo/diaro_circuiti_3.md",
-    "circuiti_3/fitting_root/phase.png",
-    "circuiti_3/fitting_root/MTH_imgs/MTH_14.png",
-    "circuiti_3/fitting_root/CH2_imgs/CH2_14.png"
+    "circuiti_3/diario_di_bordo/hilbert transform.md",
+    "circuiti_3/diario_di_bordo/fsdff.md"
   ]
 }

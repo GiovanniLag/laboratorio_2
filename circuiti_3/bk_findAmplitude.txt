@@ -1,0 +1,102 @@
+
+#signal must contain time, voltage, time error, voltage error
+def findAmplitude(signal, freq):
+    maxes = [] #must contain (max_index, max_value, max_error)
+    mins = [] #must contain (min_index, min_value, min_error)
+    max_index = np.argmax(signal[1])
+    T = 1/freq
+    if(signal[0][max_index] - signal[0][-1] > T/2):
+        positivie = True
+        start_point = signal[0][max_index] + T/4
+    else:
+        start_point = signal[0][max_index] - T/4
+        positivie = False
+    #divide signal in parts of T/2
+    left_cuts = [l for l in np.arange(start_point, signal[0][-1], T/2)]
+    right_cuts = [r for r in np.arange(start_point, signal[0][0], -T/2)]
+    cuts = left_cuts + right_cuts
+    #set max-min-max-min-max pattern
+    pattern = []
+    if(positivie):
+        #p_left : 0,1,0,1,0 for left cuts (min-max-min-max-min), for left cuts length
+        p_left = findPattern(1, len(left_cuts))
+        #p_right : 1,0,1,0,1 for right cuts (max-min-max-min-max), for right cuts length
+        p_right = findPattern(0, len(right_cuts))
+        pattern = (p_left + p_right)
+    else:
+        #p_left : 1,0,1,0,1 for left cuts (max-min-max-min-max), for left cuts length
+        p_left = findPattern(0, len(left_cuts))
+        #p_right : 0,1,0,1,0 for right cuts (min-max-min-max-min), for right cuts length
+        p_right = findPattern(1, len(right_cuts))
+        pattern = (p_left + p_right)
+
+    cut_signal = []
+    for c in cuts: #put cuts in the signal
+        index_nearest = np.argmin(np.abs(signal[0] - c))
+        cut_signal.append(index_nearest)
+    #sort cuts
+    cut_signal.sort()
+
+    #####Debug
+    #plt.figure()
+    #plt.plot(signal[0], signal[1], '.')
+    ##add vertical lines for cuts
+    #for c in cut_signal:
+    #    plt.axvline(signal[0][c], color = 'r')
+    #plt.show()
+    ######
+    
+    #find min and max in each cut
+    #first cut from 0 to first cut
+    #cut = signal[1][:cut_signal[0]]
+    #if(not len(cut) == 0):
+    #    plt.plot(signal[0][:cut_signal[0]], cut)
+    #    max_index = np.argmax(cut)
+    #    min_index = np.argmin(cut)
+    #find max_index and min_index in the signal
+    if (pattern[0] == 0):
+        maxes.append((max_index, signal[1][max_index], signal[3][max_index]))
+    else:
+        mins.append((min_index, signal[1][min_index], signal[3][min_index]))
+    #cuts in the middle
+    for i in range(len(cut_signal) - 1):
+        cut = signal[1][cut_signal[i]:cut_signal[i+1]]
+        #if the cut is empty, skip it
+        if(len(cut) == 0):
+            continue
+        max_index = np.argmax(cut)
+        min_index = np.argmin(cut)
+        #find max_index and min_index in the signal
+        max_index = cut_signal[i] + max_index
+        min_index = cut_signal[i] + min_index
+        if (pattern[i] == 0):
+            maxes.append((max_index, signal[1][max_index], signal[3][max_index]))
+        else:
+            mins.append((min_index, signal[1][min_index], signal[3][min_index]))
+    #find max and min in the last cut
+    cut = signal[1][cut_signal[-1]:]
+    max_index = np.argmax(cut)
+    min_index = np.argmin(cut)
+    #find max_index and min_index in the signal
+    max_index = cut_signal[-1] + max_index
+    min_index = cut_signal[-1] + min_index
+    if (pattern[-1] == 0):
+        maxes.append((max_index, signal[1][max_index], signal[3][max_index]))
+    else:
+        mins.append((min_index, signal[1][min_index], signal[3][min_index]))
+
+    #rmove outliers, if max is too far from the mean, remove it (to do?)
+
+    #find amplitude as weighted mean of abs of maxes and mins
+    abs_values = [np.abs(m[1]) for m in maxes + mins]
+    weights = []
+    for m in maxes + mins:
+        if m[2] == 0:
+            weights.append(1/0.001**2)
+        else:
+            weights.append(1/m[2]**2)
+    
+    amp = np.mean(abs_values)
+    #err is 1/sum(1/error)**2
+    err = lu.st_dev(np.array(abs_values))
+    return amp, err

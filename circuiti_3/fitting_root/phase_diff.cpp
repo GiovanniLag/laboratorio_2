@@ -13,8 +13,9 @@
 #include "../include/reader.h"
 #include "../include/utils.h"
 #include "../include/fitting.h"
+#include "../include/writer.h"
 
-#define max_BFOMTY_iters 10
+#define max_BFOMTY_iters 5000
 
 int main(int argc, char const *argv[])
 {
@@ -83,23 +84,40 @@ int main(int argc, char const *argv[])
         TF1 *sin_fit_CH2 = new TF1("sin_fit_CH2", "[0]*sin([1]*x+[2])", 0, max(CH2_time));
         TF1 *sin_fit_MTH = new TF1("sin_fit_MTH", "[0]*sin([1]*x+[2])", 0, max(MTH_time));
         std::vector<double> phase_min = {0.0};
-        std::vector<double> phase_max = {TMath::Pi()};
+        std::vector<double> phase_max = {TMath::Pi()+0.1};
         std::vector<double> par_gues = {0.5*(max(CH1_voltage)- min(CH1_voltage)), 2 * TMath::Pi() * freqs[i]};
         //order of parameters, "r" stand for range meaning that the parameter is given as a range, 
         //"g" stand for guess meaning that the parameter is given as a guess
         std::vector<std::string> order = {"g", "g", "r"};
         //fit
         TGraphErrors *gr_CH1 = new TGraphErrors(CH1_time.size(), &CH1_time[0], &CH1_voltage[0], &CH1_time_err[0], &CH1_voltage_err[0]);
+        sin_fit_CH1->SetParLimits(2, 0.0, TMath::Pi());
         sin_fit_CH1 = BFOMTY(gr_CH1, sin_fit_CH1, phase_min, phase_max, max_BFOMTY_iters, order, par_gues);
 
         TGraphErrors *gr_CH2 = new TGraphErrors(CH2_time.size(), &CH2_time[0], &CH2_voltage[0], &CH2_time_err[0], &CH2_voltage_err[0]);
+        sin_fit_CH2->SetParLimits(2, 0.0, TMath::Pi());
         sin_fit_CH2 = BFOMTY(gr_CH2, sin_fit_CH2, phase_min, phase_max, max_BFOMTY_iters, order, par_gues);
 
         TGraphErrors *gr_MTH = new TGraphErrors(MTH_time.size(), &MTH_time[0], &MTH_voltage[0], &MTH_time_err[0], &MTH_voltage_err[0]);
+        //limit [2] (i.e. phase) to be greater than 0
+        sin_fit_MTH->SetParLimits(2, 0.0, TMath::Pi());
         sin_fit_MTH = BFOMTY(gr_MTH, sin_fit_MTH, phase_min, phase_max, max_BFOMTY_iters, order, par_gues);
 
 
         //get phase
+        //if the phase is negative, add pi to it
+        //if (sin_fit_CH1->GetParameter(2) <= 0)
+        //{
+        //    sin_fit_CH1->SetParameter(2, sin_fit_CH1->GetParameter(2) + TMath::Pi());
+        //}
+        //if (sin_fit_CH2->GetParameter(2) <= 0)
+        //{
+        //    sin_fit_CH2->SetParameter(2, sin_fit_CH2->GetParameter(2) + TMath::Pi());
+        //}
+        //if (sin_fit_MTH->GetParameter(2) <= 0.0)
+        //{
+        //    sin_fit_MTH->SetParameter(2, sin_fit_MTH->GetParameter(2) + TMath::Pi());
+        //}
         phase_CH1.push_back(sin_fit_CH1->GetParameter(2));
         phase_CH2.push_back(sin_fit_CH2->GetParameter(2));
         phase_MTH.push_back(sin_fit_MTH->GetParameter(2));
@@ -259,7 +277,22 @@ int main(int argc, char const *argv[])
     c3->SaveAs("phase_diff_CH1_MTH.png");
 
 
+    //SAVE DATA
+    //save phases
+    //create vector of vectors, each vector is a row of data (CH1, CH2, MTH)
+    std::vector<std::vector<double>> data_phase;
+    for ( int i = 0; i < phase_CH1.size(); i++)
+    {
+        std::vector<double> row;
+        row.push_back(freqs[i]);
+        row.push_back(phase_CH1[i]);
+        row.push_back(phase_CH2[i]);
+        row.push_back(phase_MTH[i]);
+        data_phase.push_back(row);
+    }
+    std::vector<std::string> colums_names = {"Phase CH1 (rad)", "Phase CH2 (rad)", "Phase MTH (rad)"};
 
+    writeCSV(data_phase, colums_names, "../data/RC/phase.csv");
     
     return 0;
 }
