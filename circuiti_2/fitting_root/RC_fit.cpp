@@ -71,8 +71,8 @@ int main(int argc, char const *argv[])
     charge_graph->SetMarkerColor(2);
     charge_graph->SetMarkerStyle(20);
     charge_graph->SetMarkerSize(0.5);
-    charge_graph->GetXaxis()->SetTitle("t [s]");
-    charge_graph->GetYaxis()->SetTitle("V [V]");
+    charge_graph->GetXaxis()->SetTitle("Tempo [s]");
+    charge_graph->GetYaxis()->SetTitle("Tensione [V]");
     charge_graph->Draw("AP");
     charge_fit->Draw("same");
     //create TPaveText to display fit result information
@@ -82,6 +82,10 @@ int main(int argc, char const *argv[])
     fitInfo_charge->AddText(Form("Risultati Fit:"));
     fitInfo_charge->AddText(Form("   Chi2/dof = %.2f / %d = %.2f", charge_fit->GetChisquare(), charge_fit->GetNDF(), charge_fit->GetChisquare()/charge_fit->GetNDF()));
     fitInfo_charge->AddText(Form("   p-value  = %.3f", charge_fit->GetProb()));
+    fitInfo_charge->AddText(Form("   V_{C} = V_{g} #upoint (1-exp(-t/tau))"));
+    //multiply by 10^5 to display in micro seconds
+    fitInfo_charge->AddText(Form("   tau = (%.3f +- %.3f) #upoint 10^{-5}", charge_fit->GetParameter(1)*100000, charge_fit->GetParError(1)*100000));
+    fitInfo_charge->AddText(Form("   V_{g} = (%.3f +- %.3f) V", charge_fit->GetParameter(0), charge_fit->GetParError(0)));
     fitInfo_charge->Draw();
     
     //blue for discharge -> in c_discharge canvas
@@ -89,8 +93,8 @@ int main(int argc, char const *argv[])
     discharge_graph->SetMarkerColor(4);
     discharge_graph->SetMarkerStyle(20);
     discharge_graph->SetMarkerSize(0.5);
-    discharge_graph->GetXaxis()->SetTitle("t [s]");
-    discharge_graph->GetYaxis()->SetTitle("V [V]");
+    discharge_graph->GetXaxis()->SetTitle("Tempo [s]");
+    discharge_graph->GetYaxis()->SetTitle("Tensione [V]");
     discharge_graph->Draw("AP");
     discharge_fit->Draw("same");
     //create TPaveText to display fit result information
@@ -100,6 +104,10 @@ int main(int argc, char const *argv[])
     fitInfo_discharge->AddText(Form("Risultati Fit:"));
     fitInfo_discharge->AddText(Form("   Chi2/dof = %.2f / %d = %.2f", discharge_fit->GetChisquare(), discharge_fit->GetNDF(), discharge_fit->GetChisquare()/discharge_fit->GetNDF()));
     fitInfo_discharge->AddText(Form("   p-value  = %.3f", discharge_fit->GetProb()));
+    fitInfo_discharge->AddText(Form("   V_{C} = V_{g} #upoint (exp(-t/tau))"));
+    //multiply by 10^5 to display in micro seconds
+    fitInfo_discharge->AddText(Form("   tau = (%.3f +- %.3f) #upoint 10^{-5}", discharge_fit->GetParameter(1)*100000, discharge_fit->GetParError(1)*100000));
+    fitInfo_discharge->AddText(Form("   V_{g} = (%.3f +- %.3f) V", discharge_fit->GetParameter(0), discharge_fit->GetParError(0)));
     fitInfo_discharge->Draw();
 
     //save canvas

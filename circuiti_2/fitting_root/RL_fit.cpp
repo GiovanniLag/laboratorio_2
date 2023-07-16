@@ -56,11 +56,15 @@ int main(int argc, char const *argv[])
     charge_graph->Fit(charge_fit, "R");
     std::cout << "V_g = " << charge_fit->GetParameter(0) << " +- " << charge_fit->GetParError(0) << std::endl;
     std::cout << "tau = " << charge_fit->GetParameter(1) << " +- " << charge_fit->GetParError(1) << std::endl;
+    std::cout << "Chi2/dof = " << charge_fit->GetChisquare() << " / " << charge_fit->GetNDF() << " = " << charge_fit->GetChisquare()/charge_fit->GetNDF() << std::endl;
+    std::cout << "p-value = " << charge_fit->GetProb() << std::endl;
 
     std::cout << "Fit discharge" << std::endl;
     discharge_graph->Fit(discharge_fit, "R");
     std::cout << "V_g = " << discharge_fit->GetParameter(0) << " +- " << discharge_fit->GetParError(0) << std::endl;
     std::cout << "tau = " << discharge_fit->GetParameter(1) << " +- " << discharge_fit->GetParError(1) << std::endl;
+    std::cout << "Chi2/dof = " << discharge_fit->GetChisquare() << " / " << discharge_fit->GetNDF() << " = " << discharge_fit->GetChisquare()/discharge_fit->GetNDF() << std::endl;
+    std::cout << "p-value = " << discharge_fit->GetProb() << std::endl;
 
     //create canvases
     TCanvas *c_charge = new TCanvas("c1", "c1", 800, 600);
@@ -72,8 +76,8 @@ int main(int argc, char const *argv[])
     charge_graph->SetMarkerColor(2);
     charge_graph->SetMarkerStyle(20);
     charge_graph->SetMarkerSize(0.5);
-    charge_graph->GetXaxis()->SetTitle("t [s]");
-    charge_graph->GetYaxis()->SetTitle("V [V]");
+    charge_graph->GetXaxis()->SetTitle("Tempo [s]");
+    charge_graph->GetYaxis()->SetTitle("Tensione [V]");
     charge_graph->Draw("AP");
     charge_fit->Draw("same");
     //create TPaveText to display fit result information
@@ -83,6 +87,10 @@ int main(int argc, char const *argv[])
     fitInfo_charge->AddText(Form("Risultati Fit:"));
     fitInfo_charge->AddText(Form("   Chi2/dof = %.2f / %d = %.2f", charge_fit->GetChisquare(), charge_fit->GetNDF(), charge_fit->GetChisquare()/charge_fit->GetNDF()));
     fitInfo_charge->AddText(Form("   p-value  = %.3f", charge_fit->GetProb()));
+    fitInfo_charge->AddText(Form("   V_{L} = V_{g} #upoint (1-exp(-t/tau))"));
+    //multiply by 10^5 to display in micro seconds
+    fitInfo_charge->AddText(Form("   tau = (%.3f +- %.3f) #upoint 10^{-5}", charge_fit->GetParameter(1)*100000, charge_fit->GetParError(1)*100000));
+    fitInfo_charge->AddText(Form("   V_{g} = (%.3f +- %.3f) V", charge_fit->GetParameter(0), charge_fit->GetParError(0)));
     fitInfo_charge->Draw();
     
     //blue for discharge -> in c_discharge canvas
@@ -90,17 +98,21 @@ int main(int argc, char const *argv[])
     discharge_graph->SetMarkerColor(4);
     discharge_graph->SetMarkerStyle(20);
     discharge_graph->SetMarkerSize(0.5);
-    discharge_graph->GetXaxis()->SetTitle("t [s]");
-    discharge_graph->GetYaxis()->SetTitle("V [V]");
+    discharge_graph->GetXaxis()->SetTitle("Tempo [s]");
+    discharge_graph->GetYaxis()->SetTitle("Tensione [V]");
     discharge_graph->Draw("AP");
     discharge_fit->Draw("same");
     //create TPaveText to display fit result information
-    TPaveText *fitInfo_discharge = new TPaveText(0.58, 0.68, 0.88, 0.88, "NDC");
+    TPaveText *fitInfo_discharge = new TPaveText(0.58, 0.68, 0.88, 0.88,"NDC");
     fitInfo_discharge->SetFillColor(0);
     fitInfo_discharge->SetTextAlign(12);
     fitInfo_discharge->AddText(Form("Risultati Fit:"));
     fitInfo_discharge->AddText(Form("   Chi2/dof = %.2f / %d = %.2f", discharge_fit->GetChisquare(), discharge_fit->GetNDF(), discharge_fit->GetChisquare()/discharge_fit->GetNDF()));
-    fitInfo_discharge->AddText(Form("   p-value  = %.3f", discharge_fit->GetProb()));
+    fitInfo_discharge->AddText(Form("   p-value  = %.3f #upoint 10^{-12}", discharge_fit->GetProb()*1e12));
+    fitInfo_discharge->AddText(Form("   V_{L} = V_{g} #upoint (exp(-t/tau))"));
+    //multiply by 10^5 to display in micro seconds
+    fitInfo_discharge->AddText(Form("   tau = (%.3f +- %.3f) #upoint 10^{-5}", discharge_fit->GetParameter(1)*100000, discharge_fit->GetParError(1)*100000));
+    fitInfo_discharge->AddText(Form("   V_{g} = (%.3f +- %.3f) V", discharge_fit->GetParameter(0), discharge_fit->GetParError(0)));
     fitInfo_discharge->Draw();
 
     //save canvas

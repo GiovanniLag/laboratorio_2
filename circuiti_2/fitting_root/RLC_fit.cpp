@@ -70,27 +70,34 @@ int main(int argc, char const *argv[])
     writeCSV(values2, colums2, "../data/RLC/crit_smorzato/crit_smorzato_fit.csv");
 
     //create canvases
-    TCanvas *c_sottosmorzato = new TCanvas("c1", "c1", 800, 600);
+    TCanvas *c_sottosmorzato = new TCanvas("c1", "c1", 1200, 900);
     TCanvas *c_crit_smorzato = new TCanvas("c2", "c2", 800, 600);
 
     //draw graphs with fit info
     //red for charge -> in c_charge canvas
     c_sottosmorzato->cd();
+    c_sottosmorzato->SetMargin(0.12, 0.03, 0.1, 0.05);
     sottosmorzato_grph->SetMarkerColor(2);
     sottosmorzato_grph->SetMarkerStyle(20);
     sottosmorzato_grph->SetMarkerSize(0.5);
-    sottosmorzato_grph->GetXaxis()->SetTitle("t [s]");
-    sottosmorzato_grph->GetYaxis()->SetTitle("V [V]");
+    sottosmorzato_grph->GetXaxis()->SetTitle("Tempo [s]");
+    sottosmorzato_grph->GetYaxis()->SetTitle("Tensione [V]");
     sottosmorzato_grph->Draw("AP");
     sottosmorzato_fit->Draw("same");
     //create TPaveText to display fit result information
-    TPaveText *fitInfo_sottosmorzato = new TPaveText(0.58, 0.58, 0.88, 0.88, "NDC");
+    TPaveText *fitInfo_sottosmorzato = new TPaveText(0.58, 0.56, 0.88, 0.88, "NDC");
     fitInfo_sottosmorzato->SetFillColor(0);
     fitInfo_sottosmorzato->SetTextAlign(12);
     fitInfo_sottosmorzato->AddText(Form("Risultati Fit:"));
     fitInfo_sottosmorzato->AddText(Form("   Chi2/dof = %.2f / %d = %.2f", sottosmorzato_fit->GetChisquare(), sottosmorzato_fit->GetNDF(), sottosmorzato_fit->GetChisquare()/sottosmorzato_fit->GetNDF()));
-    fitInfo_sottosmorzato->AddText(Form("   p-value  = %.3f", sottosmorzato_fit->GetProb()));
+    fitInfo_sottosmorzato->AddText(Form("   p-value  = %.3f #upoint 10^{-10}", sottosmorzato_fit->GetProb()*1e10));
+    fitInfo_sottosmorzato->AddText(Form("   V(t) = V_0 * exp(-gamma*t) * (beta*sin(beta*t))"));
+    //display parameter values, multiply by 10^5 to display in microseconds
+    fitInfo_sottosmorzato->AddText(Form("   V_0 = (%.3f +- %.3f) #upoint 10^{-6} V", sottosmorzato_fit->GetParameter(0)*1e6, sottosmorzato_fit->GetParError(0)*1e6));
+    fitInfo_sottosmorzato->AddText(Form("   gamma = (%.3f +- %.3f) #upoint 10^{-5}", sottosmorzato_fit->GetParameter(1)*100000, sottosmorzato_fit->GetParError(1)*100000));
+    fitInfo_sottosmorzato->AddText(Form("   beta = (%.3f +- %.3f) #upoint 10^{-5}", sottosmorzato_fit->GetParameter(2)*100000, sottosmorzato_fit->GetParError(2)*100000));
     fitInfo_sottosmorzato->Draw();
+
     //save canvas
     c_sottosmorzato->SaveAs("RLC_fit_sottosmorzato.png");
 

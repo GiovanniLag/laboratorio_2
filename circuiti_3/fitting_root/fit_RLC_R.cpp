@@ -17,7 +17,7 @@
 #include "../include/fitting.h"
 #include "../include/writer.h"
 
-#define BFOMTY_iters 1000
+#define BFOMTY_iters 10000
 
 /*definition of functions for fitting*/
 //RLC ---------------------------------------------
@@ -93,6 +93,7 @@ int main(int argc, char const *argv[])
     double C_fit = 47.0e-9;
     H1_module_fit = new TF1("H1_module_fit", RLC_HR_module, min(freq), max(freq), 3);
     H1_arg_fit = new TF1("H1_arg_fit", RLC_HR_arg, min(freq), max(freq), 3);
+    
 
     //calculate V_(g-z)/V_g (i.e. amp_ch2/amp_ch1)
     std::vector<double> amp_ch2_ch1;
@@ -139,6 +140,9 @@ int main(int argc, char const *argv[])
     std::cout << "tau = " << tau_arg << " +- " << tau_arg_err << std::endl;
     std::cout << std::endl;
     //------------------------------------------------------------    
+
+    H1_module_fit->SetRange(0, max(freq) + 5000);
+    H1_arg_fit->SetRange(0, max(freq) + 5000);
     
     //plotting ----------------------------------------------------
     //H1
@@ -160,12 +164,14 @@ int main(int argc, char const *argv[])
     pt_amp_Vz_Vg->SetTextSize(0.02);
     pt_amp_Vz_Vg->SetFillColor(0);
     pt_amp_Vz_Vg->SetTextFont(42);
-    pt_amp_Vz_Vg->AddText("Parametri fit:");
-    pt_amp_Vz_Vg->AddText(Form("tau = (%.2e #pm %.2e) s", H1_module_fit->GetParameter(0), H1_module_fit->GetParError(0)));
+    pt_amp_Vz_Vg->AddText("Parametri fit:");//R, C, L
+    pt_amp_Vz_Vg->AddText(Form("R = %.2e #pm %.2e", H1_module_fit->GetParameter(0), H1_module_fit->GetParError(0)));
+    pt_amp_Vz_Vg->AddText(Form("C = %.2e #pm %.2e", H1_module_fit->GetParameter(1), H1_module_fit->GetParError(1)));
+    pt_amp_Vz_Vg->AddText(Form("L = %.2e #pm %.2e", H1_module_fit->GetParameter(2), H1_module_fit->GetParError(2)));
     //add chi square / ndf to TPaveText
     pt_amp_Vz_Vg->AddText(Form("#chi^{2} / ndf = %.2f / %d = %.2f", H1_module_fit->GetChisquare(), H1_module_fit->GetNDF(), H1_module_fit->GetChisquare() / H1_module_fit->GetNDF()));
     //add p-value to TPaveText
-    pt_amp_Vz_Vg->AddText(Form("p-value = %.2f", TMath::Prob(H1_module_fit->GetChisquare(), H1_module_fit->GetNDF())));
+    pt_amp_Vz_Vg->AddText(Form("p-value = %.2e", TMath::Prob(H1_module_fit->GetChisquare(), H1_module_fit->GetNDF())));
     pt_amp_Vz_Vg->Draw();
     c_amp_Vz_Vg->SaveAs("RLC_R_amp_Vz_Vg.png");
     
@@ -186,12 +192,14 @@ int main(int argc, char const *argv[])
     pt_phase_diff_Vz_Vg->SetTextSize(0.02);
     pt_phase_diff_Vz_Vg->SetFillColor(0);
     pt_phase_diff_Vz_Vg->SetTextFont(42);
-    pt_phase_diff_Vz_Vg->AddText("Parametri fit:");
-    pt_phase_diff_Vz_Vg->AddText(Form("tau = (%.2e #pm %.2e) s", H1_arg_fit->GetParameter(0), H1_arg_fit->GetParError(0)));
+    pt_phase_diff_Vz_Vg->AddText("Parametri fit:"); //R, C, L
+    pt_phase_diff_Vz_Vg->AddText(Form("R = (%.2e #pm %.2e) #Omega", H1_arg_fit->GetParameter(0), H1_arg_fit->GetParError(0)));
+    pt_phase_diff_Vz_Vg->AddText(Form("C = (%.2e #pm %.2e) F", H1_arg_fit->GetParameter(1), H1_arg_fit->GetParError(1)));
+    pt_phase_diff_Vz_Vg->AddText(Form("L = (%.2e #pm %.2e) H", H1_arg_fit->GetParameter(2), H1_arg_fit->GetParError(2)));
     //add chi square / ndf to TPaveText
     pt_phase_diff_Vz_Vg->AddText(Form("#chi^{2} / ndf = %.2f / %d = %.2f", H1_arg_fit->GetChisquare(), H1_arg_fit->GetNDF(), H1_arg_fit->GetChisquare() / H1_arg_fit->GetNDF()));
     //add p-value to TPaveText
-    pt_phase_diff_Vz_Vg->AddText(Form("p-value = %.2f", TMath::Prob(H1_arg_fit->GetChisquare(), H1_arg_fit->GetNDF())));
+    pt_phase_diff_Vz_Vg->AddText(Form("p-value = %.2e", TMath::Prob(H1_arg_fit->GetChisquare(), H1_arg_fit->GetNDF())));
     pt_phase_diff_Vz_Vg->Draw();
     c_phase_diff_Vz_Vg->SaveAs("RLC_R_phase_diff_Vz_Vg.png");
     //------------------------------------------------------------

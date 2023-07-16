@@ -11,14 +11,11 @@
             "id": "325fa31f0ead2631",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Untitled.canvas",
-                "viewState": {
-                  "x": -140,
-                  "y": 1.5,
-                  "zoom": 0
-                }
+                "file": "circuiti_3/diario_di_bordo/diaro_circuiti_3.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -96,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Untitled.canvas",
+                "file": "circuiti_3/diario_di_bordo/diaro_circuiti_3.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -113,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Untitled.canvas",
+                "file": "circuiti_3/diario_di_bordo/diaro_circuiti_3.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Untitled.canvas"
+                "file": "circuiti_3/diario_di_bordo/diaro_circuiti_3.md"
               }
             }
           }
@@ -159,33 +156,34 @@
   },
   "active": "325fa31f0ead2631",
   "lastOpenFiles": [
+    "circuiti_3/fitting_root/RLC_L_phase_diff_Vz_Vg.png",
+    "circuiti_3/fitting_root/RLC_L_amp_Vz_Vg.png",
+    "circuiti_3/fitting_root/fit_RLC_L",
+    "circuiti_3/fitting_root/fit_RLC_L.cpp",
+    "circuiti_3/data/RLC/L/RLC_L_table.csv",
+    "circuiti_3/data/RLC/L/84560/MTH_clustered.CSV",
+    "circuiti_3/data/RLC/L/84560/CH2_clustered.CSV",
+    "circuiti_3/data/RLC/L/84560/CH1_clustered.CSV",
+    "circuiti_3/data/RLC/L/7277/MTH_clustered.CSV",
+    "circuiti_3/data/RLC/L/7277/CH2_clustered.CSV",
+    "circuiti_3/data/RLC/L/7277/CH1_clustered.CSV",
+    "circuiti_3/data/RLC/L/62100/MTH_clustered.CSV",
+    "circuiti_3/fitting_root/RLC_C_phase_diff_Vz_Vg.png",
+    "circuiti_3/fitting_root/RLC_C_amp_Vz_Vg.png",
+    "circuiti_3/diario_di_bordo/hilbert transform.md",
     "Untitled.canvas",
     "interferometro/diario_di_bordo/diario_di_bordo.md",
     "interferometro/imgs/michelson_vetro.png",
     "interferometro/imgs/michelson_aria.png",
     "interferometro/imgs/righello.jpg",
     "interferometro/fitting_root/fit_righello.png",
-    "interferometro/fitting_root/fit_righello",
-    "interferometro/fitting_root/fit_righello.cpp",
-    "interferometro/data/righello/delta_cos_theta.csv",
-    "interferometro/data/righello",
     "interferometro/imgs/config_michelson.png",
     "interferometro/fitting_root/cos_fit.png",
-    "interferometro/fitting_root/fit_cos_fp",
-    "interferometro/fitting_root/fit_cos_fp.cpp",
-    "interferometro/data/fabry-perot/cos_fit.csv",
-    "interferometro/data/fabry-perot/radii.tex",
     "interferometro/imgs/config_fabry-perot.png",
-    "interferometro/imgs/immagine_base_appoggio.jpg",
-    "interferometro/immagine_base_appoggio.jpg",
-    "microonde/diario_di_bordo/ondestazionarie_r.jpg",
     "2023-06-12.md",
-    "interferometro/data/michelson/vetro.csv",
-    "interferometro/data/fabry-perot/vario_dist_specchio.csv",
     "spettrometro/diario_di_bordo/diario_di_bordo.md",
     "microonde/diario_di_bordo/diario_di_bordo.md",
     "circuiti_3/diario_di_bordo/diaro_circuiti_3.md",
-    "circuiti_3/diario_di_bordo/hilbert transform.md",
     "circuiti_3/diario_di_bordo/fsdff.md"
   ]
 }
